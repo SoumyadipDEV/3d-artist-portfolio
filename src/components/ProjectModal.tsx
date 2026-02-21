@@ -6,7 +6,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
-import GoogleDriveVideo from "@/components/GoogleDriveVideo";
+import SupabaseVideo from "@/components/SupabaseVideo";
 import { type Project } from "@/data/projects";
 
 interface ProjectModalProps {
@@ -22,7 +22,7 @@ const ProjectModal = ({ project, open, onOpenChange }: ProjectModalProps) => {
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-3xl border-border bg-card p-0 sm:rounded-2xl">
         <div className="overflow-hidden rounded-t-2xl">
-          <GoogleDriveVideo fileId={project.driveFileId} />
+          <SupabaseVideo videoUrl={project.videoUrl} posterUrl={project.posterUrl} />
         </div>
         <div className="space-y-4 p-6">
           <DialogHeader>

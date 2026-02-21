@@ -38,10 +38,15 @@ The app runs on `http://localhost:8080`.
 Create a `.env` file in the project root:
 
 ```env
-VITE_GOOGLE_DRIVE_BASE_URL=https://drive.google.com/file/d/
+VITE_SUPABASE_URL=https://your-project-ref.supabase.co
+VITE_SUPABASE_ANON_KEY=your-anon-key
+VITE_SUPABASE_STORAGE_BUCKET=portfolio-videos
+VITE_SUPABASE_STORAGE_BASE_URL=https://your-project-ref.supabase.co/storage/v1/object/public/portfolio-videos
+VITE_HERO_VIDEO_URL=https://your-project-ref.supabase.co/storage/v1/object/public/portfolio-videos/hero/hero-loop.mp4
+VITE_PROJECT_VIDEO_1_URL=https://your-project-ref.supabase.co/storage/v1/object/public/portfolio-videos/work/neon-genesis.mp4
 ```
 
-`VITE_GOOGLE_DRIVE_BASE_URL` is optional because the same default is already used in `src/lib/googleDrive.ts`.
+Use public Supabase Storage URLs for all hero/work videos and posters.
 
 ## Available Scripts
 
@@ -58,10 +63,10 @@ VITE_GOOGLE_DRIVE_BASE_URL=https://drive.google.com/file/d/
 Update these files with your own details:
 
 - `src/components/Hero.tsx`
-Replace `HERO_VIDEO_FILE_ID` with your Google Drive file ID.
+Set `VITE_HERO_VIDEO_URL` to your Supabase public video URL.
 
 - `src/data/projects.ts`
-Add your real projects (title, description, category, tools, and `driveFileId`).
+Add your real projects (title, description, category, tools, plus `videoUrl` and `posterUrl`).
 
 - `src/components/AboutMe.tsx`
 Replace placeholder biography and education data.
@@ -80,7 +85,7 @@ src/
   components/        Reusable UI and page sections
   components/ui/     shadcn/ui components
   data/              Portfolio data (projects, skills)
-  lib/               Utility functions (Google Drive URL helpers, cn)
+  lib/               Utility functions (Supabase URL helpers, cn)
   pages/             Route pages (Home, About, Work, Contact, 404)
   test/              Vitest setup and tests
 ```

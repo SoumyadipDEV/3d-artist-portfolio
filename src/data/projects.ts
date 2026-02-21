@@ -1,16 +1,24 @@
+import { getSupabasePublicUrl } from "@/lib/supabaseStorage";
+
 export interface Project {
   id: string;
-  driveFileId: string;
+  videoUrl: string;
+  posterUrl: string;
   title: string;
   description: string;
   category: string;
   tools: string[];
 }
 
+const resolveUrl = (envUrl: string | undefined, fallbackAssetPath: string) => {
+  return envUrl?.trim() || getSupabasePublicUrl(fallbackAssetPath);
+};
+
 export const projects: Project[] = [
   {
     id: "1",
-    driveFileId: "1pQLML8Iy9Dgb_chNEb3Ve8ybQxnAgJdY",
+    videoUrl: resolveUrl(import.meta.env.VITE_PROJECT_VIDEO_1_URL, "work/neon-genesis.mp4"),
+    posterUrl: resolveUrl(import.meta.env.VITE_PROJECT_POSTER_1_URL, "posters/neon-genesis.jpg"),
     title: "Neon Genesis",
     description: "A cyberpunk cityscape rendered in real-time. Exploring volumetric lighting and atmospheric fog to create a moody, rain-soaked metropolis.",
     category: "Environment",
@@ -18,7 +26,8 @@ export const projects: Project[] = [
   },
   {
     id: "2",
-    driveFileId: "1ofIUyPW3_iIchWCi5sWo1M3hbF08f_qd",
+    videoUrl: resolveUrl(import.meta.env.VITE_PROJECT_VIDEO_2_URL, "work/mechanical-heart.mp4"),
+    posterUrl: resolveUrl(import.meta.env.VITE_PROJECT_POSTER_2_URL, "posters/mechanical-heart.jpg"),
     title: "Mechanical Heart",
     description: "An intricate mechanical heart animation showcasing hard-surface modeling techniques and procedural texturing.",
     category: "Animation",
@@ -26,7 +35,8 @@ export const projects: Project[] = [
   },
   {
     id: "3",
-    driveFileId: "1nkCYE9PtbLJT-VD3aaJs3dqrWAydtWmc",
+    videoUrl: resolveUrl(import.meta.env.VITE_PROJECT_VIDEO_3_URL, "work/ancient-ruins.mp4"),
+    posterUrl: resolveUrl(import.meta.env.VITE_PROJECT_POSTER_3_URL, "posters/ancient-ruins.jpg"),
     title: "Ancient Ruins",
     description: "Photorealistic ancient temple ruins overgrown with vegetation. Focus on photogrammetry and PBR materials.",
     category: "Environment",
@@ -34,7 +44,8 @@ export const projects: Project[] = [
   },
   {
     id: "4",
-    driveFileId: "1ynL9MBvqyxVeioGpClwAi1edwAYYoB67",
+    videoUrl: resolveUrl(import.meta.env.VITE_PROJECT_VIDEO_4_URL, "work/character-rig-demo.mp4"),
+    posterUrl: resolveUrl(import.meta.env.VITE_PROJECT_POSTER_4_URL, "posters/character-rig-demo.jpg"),
     title: "Character Rig Demo",
     description: "Full character rigging and animation cycle demonstration with IK/FK blending and facial expressions.",
     category: "Character",
@@ -42,7 +53,8 @@ export const projects: Project[] = [
   },
   {
     id: "5",
-    driveFileId: "1m_o2uZlceTIXHnXit1zoBnIGLhHInoO_",
+    videoUrl: resolveUrl(import.meta.env.VITE_PROJECT_VIDEO_5_URL, "work/fluid-simulation.mp4"),
+    posterUrl: resolveUrl(import.meta.env.VITE_PROJECT_POSTER_5_URL, "posters/fluid-simulation.jpg"),
     title: "Fluid Simulation",
     description: "FLIP fluid simulation interacting with rigid bodies. High-resolution water splashing across geometric shapes.",
     category: "VFX",
@@ -50,7 +62,8 @@ export const projects: Project[] = [
   },
   {
     id: "6",
-    driveFileId: "6FgH_iJkLmNoPqRsTuVwXyZaBcDe",
+    videoUrl: resolveUrl(import.meta.env.VITE_PROJECT_VIDEO_6_URL, "work/abstract-motion.mp4"),
+    posterUrl: resolveUrl(import.meta.env.VITE_PROJECT_POSTER_6_URL, "posters/abstract-motion.jpg"),
     title: "Abstract Motion",
     description: "Procedurally generated abstract forms driven by audio-reactive parameters. Exploring the boundary between art and code.",
     category: "Motion Graphics",

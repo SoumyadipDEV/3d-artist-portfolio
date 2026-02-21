@@ -1,23 +1,32 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { getGoogleDrivePreviewUrl } from "@/lib/googleDrive";
+import { getSupabasePublicUrl } from "@/lib/supabaseStorage";
 
-const HERO_VIDEO_FILE_ID = "YOUR_DRIVE_FILE_ID_HERE";
+const HERO_VIDEO_ASSET_PATH = "hero/hero-loop.mp4";
 
 const Hero = () => {
-  const heroVideoSrc = getGoogleDrivePreviewUrl(HERO_VIDEO_FILE_ID);
+  const heroVideoSrc =
+    import.meta.env.VITE_HERO_VIDEO_URL?.trim() || getSupabasePublicUrl(HERO_VIDEO_ASSET_PATH);
 
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
-      {/* Google Drive background video */}
+      {/* Supabase background video */}
       <div className="absolute inset-0 z-0">
-        <iframe
-          src={heroVideoSrc}
-          title="Hero background video"
-          allow="autoplay; encrypted-media"
-          className="pointer-events-none h-full w-full scale-[1.5] border-0 object-cover"
-          style={{ filter: "brightness(0.3)" }}
-        />
+        {heroVideoSrc ? (
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            className="pointer-events-none h-full w-full scale-[1.5] object-cover"
+            style={{ filter: "brightness(0.3)" }}
+          >
+            <source src={heroVideoSrc} type="video/mp4" />
+          </video>
+        ) : (
+          <div className="h-full w-full bg-secondary" />
+        )}
       </div>
 
       {/* Dark overlay on top of video */}
