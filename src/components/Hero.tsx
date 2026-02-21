@@ -4,14 +4,19 @@ import { ChevronDown } from "lucide-react";
 const Hero = () => {
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
-      {/* Background gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background" />
-      
-      {/* Animated grid background */}
-      <div className="absolute inset-0 opacity-[0.03]" style={{
-        backgroundImage: `linear-gradient(hsl(270 60% 55% / 0.3) 1px, transparent 1px), linear-gradient(90deg, hsl(270 60% 55% / 0.3) 1px, transparent 1px)`,
-        backgroundSize: '60px 60px',
-      }} />
+      {/* Google Drive background video */}
+      <div className="absolute inset-0 z-0">
+        <iframe
+          src="https://drive.google.com/file/d/YOUR_DRIVE_FILE_ID_HERE/preview"
+          title="Hero background video"
+          allow="autoplay; encrypted-media"
+          className="pointer-events-none h-full w-full scale-[1.5] border-0 object-cover"
+          style={{ filter: "brightness(0.3)" }}
+        />
+      </div>
+
+      {/* Dark overlay on top of video */}
+      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-background/60 via-background/70 to-background" />
 
       {/* Floating orb decorations */}
       <motion.div
