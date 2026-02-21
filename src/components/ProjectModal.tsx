@@ -22,7 +22,7 @@ const ProjectModal = ({ project, open, onOpenChange }: ProjectModalProps) => {
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-3xl border-border bg-card p-0 sm:rounded-2xl">
         <div className="overflow-hidden rounded-t-2xl">
-          <GoogleDriveVideo fileId={project.driveFileId} title={project.title} />
+          <GoogleDriveVideo fileId={project.driveFileId} />
         </div>
         <div className="space-y-4 p-6">
           <DialogHeader>

@@ -1,13 +1,18 @@
 import { motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { Link } from "react-router-dom";
+import { getGoogleDrivePreviewUrl } from "@/lib/googleDrive";
+
+const HERO_VIDEO_FILE_ID = "YOUR_DRIVE_FILE_ID_HERE";
 
 const Hero = () => {
+  const heroVideoSrc = getGoogleDrivePreviewUrl(HERO_VIDEO_FILE_ID);
+
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
       {/* Google Drive background video */}
       <div className="absolute inset-0 z-0">
         <iframe
-          src="https://drive.google.com/file/d/YOUR_DRIVE_FILE_ID_HERE/preview"
+          src={heroVideoSrc}
           title="Hero background video"
           allow="autoplay; encrypted-media"
           className="pointer-events-none h-full w-full scale-[1.5] border-0 object-cover"
@@ -37,7 +42,7 @@ const Hero = () => {
           transition={{ duration: 0.6 }}
           className="mb-4 font-mono text-sm uppercase tracking-[0.3em] text-muted-foreground"
         >
-          3D Artist & Animator
+          Rajdip Banerjee | 3D Artist
         </motion.p>
 
         <motion.h1
@@ -46,12 +51,11 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="mb-6 text-5xl font-bold leading-tight tracking-tight sm:text-7xl md:text-8xl"
         >
-          Crafting{" "}
-          <span className="bg-gradient-to-r from-primary to-accent-foreground bg-clip-text text-transparent">
-            Worlds
-          </span>
+          Rajdip
           <br />
-          in Pixels
+          <span className="bg-gradient-to-r from-primary to-accent-foreground bg-clip-text text-transparent">
+            Banerjee
+          </span>
         </motion.h1>
 
         <motion.p
@@ -60,28 +64,23 @@ const Hero = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mx-auto mb-10 max-w-lg text-lg text-muted-foreground"
         >
-          Bringing imagination to life through 3D artistry, one frame at a time.
+          Fresher 3D artist delivering freelance projects in modeling, animation, and cinematic
+          visualization.
         </motion.p>
 
-        <motion.a
-          href="#showcase"
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
-          className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/50 px-6 py-3 text-sm font-medium text-foreground backdrop-blur-sm transition-all hover:border-primary/50 hover:glow-primary"
         >
-          View My Work
-        </motion.a>
+          <Link
+            to="/work"
+            className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/50 px-6 py-3 text-sm font-medium text-foreground backdrop-blur-sm transition-all hover:border-primary/50 hover:glow-primary"
+          >
+            View My Work
+          </Link>
+        </motion.div>
       </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        animate={{ y: [0, 8, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-      >
-        <ChevronDown className="h-5 w-5 text-muted-foreground" />
-      </motion.div>
     </section>
   );
 };

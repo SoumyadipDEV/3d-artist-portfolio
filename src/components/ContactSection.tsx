@@ -1,13 +1,21 @@
 import { motion } from "framer-motion";
+import { type LucideIcon, Facebook, Instagram, Linkedin, MapPin, Palette, Phone } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 
-const socials = [
-  { name: "ArtStation", href: "#", icon: "A" },
-  { name: "Instagram", href: "#", icon: "I" },
-  { name: "LinkedIn", href: "#", icon: "L" },
-  { name: "Facebook", href: "#", icon: "F" },
+interface SocialLink {
+  name: string;
+  href: string;
+  Icon: LucideIcon;
+}
+
+const socialLinks: SocialLink[] = [
+  { name: "ArtStation", href: "#", Icon: Palette },
+  { name: "Instagram", href: "#", Icon: Instagram },
+  { name: "LinkedIn", href: "#", Icon: Linkedin },
+  { name: "Facebook", href: "#", Icon: Facebook },
+  { name: "Mobile Number", href: "tel:+919000000000", Icon: Phone },
 ];
 
 const ContactSection = () => {
@@ -30,6 +38,19 @@ const ContactSection = () => {
           <p className="mx-auto max-w-md text-muted-foreground">
             Have a project in mind or just want to say hi? I'd love to hear from you.
           </p>
+          <div className="mt-6 flex flex-col items-center gap-3 text-sm text-muted-foreground sm:flex-row sm:justify-center sm:gap-8">
+            <p className="flex items-center gap-2">
+              <MapPin className="h-4 w-4 text-primary" />
+              Kolkata, India
+            </p>
+            <a
+              href="tel:+919000000000"
+              className="flex items-center gap-2 transition-colors hover:text-foreground"
+            >
+              <Phone className="h-4 w-4 text-primary" />
+              Mobile Number: +91 90000 00000
+            </a>
+          </div>
         </motion.div>
 
         <motion.div
@@ -80,21 +101,21 @@ const ContactSection = () => {
           transition={{ delay: 0.4 }}
           className="mt-12 flex items-center justify-center gap-4"
         >
-          {socials.map((s) => (
+          {socialLinks.map((social) => (
             <a
-              key={s.name}
-              href={s.href}
-              aria-label={s.name}
+              key={social.name}
+              href={social.href}
+              aria-label={social.name}
               className="flex h-11 w-11 items-center justify-center rounded-full border border-border bg-secondary/50 text-sm font-semibold text-muted-foreground transition-all hover:border-primary/50 hover:text-primary hover:glow-primary"
             >
-              {s.icon}
+              <social.Icon className="h-4 w-4" />
             </a>
           ))}
         </motion.div>
 
         {/* Footer */}
         <p className="mt-16 text-center text-xs text-muted-foreground">
-          © 2026 — Designed & built with passion.
+          © 2026 Rajdip Banerjee. Designed & built with passion.
         </p>
       </div>
     </section>

@@ -1,13 +1,15 @@
+import Gallery from "@/components/Gallery";
 import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
 
-const Index = () => {
+const WorkPage = () => {
   return (
     <main className="min-h-screen bg-background text-foreground">
       <Navbar />
-      <Hero />
+      <div className="pt-20">
+        <Gallery />
+      </div>
     </main>
   );
 };
 
-export default Index;
+export default WorkPage;
