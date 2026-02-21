@@ -10,7 +10,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: "1",
-    driveFileId: "1AbC_dEfGhIjKlMnOpQrStUvWxYz",
+    driveFileId: "1pQLML8Iy9Dgb_chNEb3Ve8ybQxnAgJdY",
     title: "Neon Genesis",
     description: "A cyberpunk cityscape rendered in real-time. Exploring volumetric lighting and atmospheric fog to create a moody, rain-soaked metropolis.",
     category: "Environment",
@@ -18,7 +18,7 @@ export const projects: Project[] = [
   },
   {
     id: "2",
-    driveFileId: "2BcD_eFgHiJkLmNoPqRsTuVwXyZa",
+    driveFileId: "1ofIUyPW3_iIchWCi5sWo1M3hbF08f_qd",
     title: "Mechanical Heart",
     description: "An intricate mechanical heart animation showcasing hard-surface modeling techniques and procedural texturing.",
     category: "Animation",
@@ -26,7 +26,7 @@ export const projects: Project[] = [
   },
   {
     id: "3",
-    driveFileId: "3CdE_fGhIjKlMnOpQrStUvWxYzAb",
+    driveFileId: "1nkCYE9PtbLJT-VD3aaJs3dqrWAydtWmc",
     title: "Ancient Ruins",
     description: "Photorealistic ancient temple ruins overgrown with vegetation. Focus on photogrammetry and PBR materials.",
     category: "Environment",
@@ -34,7 +34,7 @@ export const projects: Project[] = [
   },
   {
     id: "4",
-    driveFileId: "4DeF_gHiJkLmNoPqRsTuVwXyZaBc",
+    driveFileId: "1ynL9MBvqyxVeioGpClwAi1edwAYYoB67",
     title: "Character Rig Demo",
     description: "Full character rigging and animation cycle demonstration with IK/FK blending and facial expressions.",
     category: "Character",
@@ -42,7 +42,7 @@ export const projects: Project[] = [
   },
   {
     id: "5",
-    driveFileId: "5EfG_hIjKlMnOpQrStUvWxYzAbCd",
+    driveFileId: "1m_o2uZlceTIXHnXit1zoBnIGLhHInoO_",
     title: "Fluid Simulation",
     description: "FLIP fluid simulation interacting with rigid bodies. High-resolution water splashing across geometric shapes.",
     category: "VFX",
