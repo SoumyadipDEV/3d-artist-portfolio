@@ -30,7 +30,7 @@ const Hero = () => {
       </div>
 
       {/* Dark overlay on top of video */}
-      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-background/60 via-background/70 to-background" />
+      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-background/0 via-background/30 to-background/60" />
 
       {/* Floating orb decorations */}
       <motion.div

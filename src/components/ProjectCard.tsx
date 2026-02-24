@@ -20,6 +20,15 @@ const ProjectCard = ({ project, index, onClick }: ProjectCardProps) => {
     >
       {/* Video thumbnail area */}
       <div className="relative aspect-video w-full overflow-hidden bg-secondary">
+        <img
+          src={project.posterUrl}
+          alt={`${project.title} poster`}
+          loading="lazy"
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+        {/* Keep content readable while preserving poster visibility */}
+        <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-card/20 to-transparent" />
+
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="flex h-14 w-14 items-center justify-center rounded-full border border-border bg-background/80 backdrop-blur-sm transition-all group-hover:scale-110 group-hover:border-primary/50 group-hover:glow-primary">
             <svg className="ml-1 h-5 w-5 text-foreground" fill="currentColor" viewBox="0 0 24 24">
@@ -27,8 +36,6 @@ const ProjectCard = ({ project, index, onClick }: ProjectCardProps) => {
             </svg>
           </div>
         </div>
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent opacity-60" />
       </div>
 
       <div className="p-4">

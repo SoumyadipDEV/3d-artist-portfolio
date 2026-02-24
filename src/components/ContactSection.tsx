@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { type LucideIcon, Facebook, Instagram, Linkedin, MapPin, Palette, Phone } from "lucide-react";
+import { useForm, ValidationError } from "@formspree/react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -19,6 +20,8 @@ const socialLinks: SocialLink[] = [
 ];
 
 const ContactSection = () => {
+  const [state, handleSubmit] = useForm("meelpyao");
+
   return (
     <section id="contact" className="relative py-24 sm:py-32">
       <div className="mx-auto max-w-4xl px-4">
@@ -60,37 +63,76 @@ const ContactSection = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mx-auto max-w-lg"
         >
-          <form
-            onSubmit={(e) => e.preventDefault()}
-            className="space-y-4 rounded-2xl border border-border bg-card p-6 sm:p-8"
-          >
-            <div className="grid gap-4 sm:grid-cols-2">
-              <Input
-                placeholder="Name"
-                className="border-border bg-secondary/50 placeholder:text-muted-foreground focus-visible:ring-primary"
-              />
-              <Input
-                type="email"
-                placeholder="Email"
-                className="border-border bg-secondary/50 placeholder:text-muted-foreground focus-visible:ring-primary"
-              />
+          {state.succeeded ? (
+            <div className="rounded-2xl border border-border bg-card p-6 text-center sm:p-8">
+              <p className="text-sm text-muted-foreground">
+                Thanks for reaching out. Your message has been sent successfully.
+              </p>
             </div>
-            <Input
-              placeholder="Subject"
-              className="border-border bg-secondary/50 placeholder:text-muted-foreground focus-visible:ring-primary"
-            />
-            <Textarea
-              placeholder="Your message..."
-              rows={5}
-              className="border-border bg-secondary/50 placeholder:text-muted-foreground focus-visible:ring-primary"
-            />
-            <Button
-              type="submit"
-              className="w-full rounded-xl bg-primary text-primary-foreground hover:bg-primary/90"
+          ) : (
+            <form
+              action="https://formspree.io/f/meelpyao"
+              method="POST"
+              onSubmit={handleSubmit}
+              className="space-y-4 rounded-2xl border border-border bg-card p-6 sm:p-8"
             >
-              Send Message
-            </Button>
-          </form>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <Input
+                  id="contact-name"
+                  name="name"
+                  placeholder="Name"
+                  required
+                  className="border-border bg-secondary/50 placeholder:text-muted-foreground focus-visible:ring-primary"
+                />
+                <Input
+                  id="contact-email"
+                  name="email"
+                  type="email"
+                  placeholder="Email"
+                  required
+                  className="border-border bg-secondary/50 placeholder:text-muted-foreground focus-visible:ring-primary"
+                />
+              </div>
+              <ValidationError
+                prefix="Email"
+                field="email"
+                errors={state.errors}
+                className="text-sm text-destructive"
+              />
+              <Input
+                id="contact-subject"
+                name="subject"
+                placeholder="Subject"
+                required
+                className="border-border bg-secondary/50 placeholder:text-muted-foreground focus-visible:ring-primary"
+              />
+              <Textarea
+                id="contact-message"
+                name="message"
+                placeholder="Your message..."
+                rows={5}
+                required
+                className="border-border bg-secondary/50 placeholder:text-muted-foreground focus-visible:ring-primary"
+              />
+              <ValidationError
+                prefix="Message"
+                field="message"
+                errors={state.errors}
+                className="text-sm text-destructive"
+              />
+              <ValidationError
+                errors={state.errors}
+                className="text-sm text-destructive"
+              />
+              <Button
+                type="submit"
+                disabled={state.submitting}
+                className="w-full rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-60"
+              >
+                {state.submitting ? "Sending..." : "Send Message"}
+              </Button>
+            </form>
+          )}
         </motion.div>
 
         {/* Social Links */}

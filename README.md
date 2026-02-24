@@ -48,6 +48,21 @@ VITE_PROJECT_VIDEO_1_URL=https://your-project-ref.supabase.co/storage/v1/object/
 
 Use public Supabase Storage URLs for all hero/work videos and posters.
 
+## Video Interactions Setup
+
+This project now supports per-video:
+- play counts
+- like counts
+- likes gated by visitor name + email (one like per email per project)
+
+Apply the SQL migration in your Supabase SQL editor:
+
+`supabase/migrations/20260224_video_interactions.sql`
+
+The frontend calls these RPCs:
+- `increment_video_play_count(p_project_id text)`
+- `submit_video_like(p_project_id text, p_visitor_name text, p_visitor_email text)`
+
 ## Available Scripts
 
 - `npm run dev` - start local dev server
