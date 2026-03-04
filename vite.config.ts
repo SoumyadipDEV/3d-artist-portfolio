@@ -10,6 +10,7 @@ export default defineConfig(() => ({
     hmr: {
       overlay: false,
     },
+    base: "/3d-artist-portfolio/",
   },
   plugins: [react()],
   resolve: {
