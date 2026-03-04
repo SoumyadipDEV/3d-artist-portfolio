@@ -25,12 +25,18 @@ jobs:
       - name: Install dependencies
         run: npm install # package.json ke hisab se install karega
 
+      - name: Create .env.production
+        env:
+          ENV_PRODUCTION: ${{ secrets.ENV_PRODUCTION }}
+        run: |
+          if [ -z "$ENV_PRODUCTION" ]; then
+            echo "Missing required secret: ENV_PRODUCTION"
+            exit 1
+          fi
+          printf "%s" "$ENV_PRODUCTION" > .env.production
+
       - name: Build
         run: npm run build
-        env:
-          # Yaha apne secrets ko as ENV variables map kar
-          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
-          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
 
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3
