@@ -4,13 +4,13 @@ import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig(() => ({
+  base: "/3d-artist-portfolio/",
   server: {
     host: "::",
     port: 8080,
     hmr: {
       overlay: false,
     },
-    base: "/3d-artist-portfolio/",
   },
   plugins: [react()],
   resolve: {
