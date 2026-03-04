@@ -12,10 +12,10 @@ interface SocialLink {
 }
 
 const socialLinks: SocialLink[] = [
-  { name: "ArtStation", href: "#", Icon: Palette },
-  { name: "Instagram", href: "#", Icon: Instagram },
-  { name: "LinkedIn", href: "#", Icon: Linkedin },
-  { name: "Facebook", href: "#", Icon: Facebook },
+  { name: "ArtStation", href: "https://www.artstation.com/your-handle", Icon: Palette },
+  { name: "Instagram", href: "https://www.instagram.com/your-handle", Icon: Instagram },
+  { name: "LinkedIn", href: "https://www.linkedin.com/in/your-handle", Icon: Linkedin },
+  { name: "Facebook", href: "https://www.facebook.com/your-handle", Icon: Facebook },
   { name: "Mobile Number", href: "tel:+919000000000", Icon: Phone },
 ];
 
@@ -143,22 +143,23 @@ const ContactSection = () => {
           transition={{ delay: 0.4 }}
           className="mt-12 flex items-center justify-center gap-4"
         >
-          {socialLinks.map((social) => (
-            <a
-              key={social.name}
-              href={social.href}
-              aria-label={social.name}
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-border bg-secondary/50 text-sm font-semibold text-muted-foreground transition-all hover:border-primary/50 hover:text-primary hover:glow-primary"
-            >
-              <social.Icon className="h-4 w-4" />
-            </a>
-          ))}
-        </motion.div>
+          {socialLinks.map((social) => {
+            const isExternal = social.href.startsWith("http");
 
-        {/* Footer */}
-        <p className="mt-16 text-center text-xs text-muted-foreground">
-          © 2026 Rajdip Banerjee. Designed & built with passion.
-        </p>
+            return (
+              <a
+                key={social.name}
+                href={social.href}
+                aria-label={social.name}
+                target={isExternal ? "_blank" : undefined}
+                rel={isExternal ? "noreferrer noopener" : undefined}
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-border bg-secondary/50 text-sm font-semibold text-muted-foreground transition-all hover:border-primary/50 hover:text-primary hover:glow-primary"
+              >
+                <social.Icon className="h-4 w-4" />
+              </a>
+            );
+          })}
+        </motion.div>
       </div>
     </section>
   );

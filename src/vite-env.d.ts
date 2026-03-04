@@ -5,6 +5,7 @@ interface ImportMetaEnv {
   readonly VITE_SUPABASE_ANON_KEY: string;
   readonly VITE_SUPABASE_STORAGE_BUCKET: string;
   readonly VITE_SUPABASE_STORAGE_BASE_URL: string;
+  readonly VITE_RESUME_BUCKET_URL: string;
   readonly VITE_HERO_VIDEO_URL: string;
   readonly VITE_PROJECT_VIDEO_1_URL: string;
   readonly VITE_PROJECT_POSTER_1_URL: string;

@@ -42,6 +42,7 @@ VITE_SUPABASE_URL=https://your-project-ref.supabase.co
 VITE_SUPABASE_ANON_KEY=your-anon-key
 VITE_SUPABASE_STORAGE_BUCKET=portfolio-videos
 VITE_SUPABASE_STORAGE_BASE_URL=https://your-project-ref.supabase.co/storage/v1/object/public/portfolio-videos
+VITE_RESUME_BUCKET_URL=https://your-project-ref.supabase.co/storage/v1/object/public/portfolio-videos/resume.pdf
 VITE_HERO_VIDEO_URL=https://your-project-ref.supabase.co/storage/v1/object/public/portfolio-videos/hero/hero-loop.mp4
 VITE_PROJECT_VIDEO_1_URL=https://your-project-ref.supabase.co/storage/v1/object/public/portfolio-videos/work/neon-genesis.mp4
 ```
@@ -55,13 +56,15 @@ This project now supports per-video:
 - like counts
 - likes gated by visitor name + email (one like per email per project)
 
-Apply the SQL migration in your Supabase SQL editor:
+Apply these SQL migrations in your Supabase SQL editor:
 
-`supabase/migrations/20260224_video_interactions.sql`
+- `supabase/migrations/20260224_video_interactions.sql`
+- `supabase/migrations/202603040001_resume_access.sql`
 
 The frontend calls these RPCs:
 - `increment_video_play_count(p_project_id text)`
 - `submit_video_like(p_project_id text, p_visitor_name text, p_visitor_email text)`
+- `submit_resume_access(p_visitor_name text, p_visitor_email text)`
 
 ## Available Scripts
 
