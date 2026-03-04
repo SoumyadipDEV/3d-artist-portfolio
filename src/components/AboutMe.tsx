@@ -23,6 +23,8 @@ const education = [
 ];
 
 const AboutMe = () => {
+  const aboutPhotoUrl = import.meta.env.VITE_ABOUT_PHOTO_URL?.trim() ?? "";
+
   return (
     <section id="about" className="relative py-24 sm:py-32">
       <div className="mx-auto max-w-5xl px-4">
@@ -49,10 +51,21 @@ const AboutMe = () => {
             className="mx-auto w-full max-w-[280px] md:mx-0"
           >
             <div className="aspect-square rounded-2xl border border-dashed border-primary/50 bg-secondary/50 p-4">
-              <div className="flex h-full items-center justify-center rounded-xl border border-border bg-card text-center text-sm text-muted-foreground">
-                Photograph
-                <br />
-                Placeholder
+              <div className="h-full overflow-hidden rounded-xl border border-border bg-card">
+                {aboutPhotoUrl ? (
+                  <img
+                    src={aboutPhotoUrl}
+                    alt="Rajdip Banerjee portrait"
+                    className="h-full w-full object-cover object-center"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="flex h-full items-center justify-center text-center text-sm text-muted-foreground">
+                    Photograph
+                    <br />
+                    Placeholder
+                  </div>
+                )}
               </div>
             </div>
           </motion.div>
