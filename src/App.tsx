@@ -11,13 +11,14 @@ import NotFound from "./pages/NotFound";
 import SiteFooter from "@/components/SiteFooter";
 
 const queryClient = new QueryClient();
+const routerBase = import.meta.env.BASE_URL;
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter basename={routerBase}>
         <div className="bg-background text-foreground">
           <Routes>
             <Route path="/" element={<Index />} />
