@@ -28,12 +28,75 @@ jobs:
       - name: Create .env.production
         env:
           ENV_PRODUCTION: ${{ secrets.ENV_PRODUCTION }}
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+          VITE_SUPABASE_STORAGE_BUCKET: ${{ secrets.VITE_SUPABASE_STORAGE_BUCKET }}
+          VITE_SUPABASE_STORAGE_BASE_URL: ${{ secrets.VITE_SUPABASE_STORAGE_BASE_URL }}
+          VITE_RESUME_BUCKET_URL: ${{ secrets.VITE_RESUME_BUCKET_URL }}
+          VITE_ABOUT_PHOTO_URL: ${{ secrets.VITE_ABOUT_PHOTO_URL }}
+          VITE_HERO_VIDEO_URL: ${{ secrets.VITE_HERO_VIDEO_URL }}
+          VITE_PROJECT_VIDEO_1_URL: ${{ secrets.VITE_PROJECT_VIDEO_1_URL }}
+          VITE_PROJECT_POSTER_1_URL: ${{ secrets.VITE_PROJECT_POSTER_1_URL }}
+          VITE_PROJECT_VIDEO_2_URL: ${{ secrets.VITE_PROJECT_VIDEO_2_URL }}
+          VITE_PROJECT_POSTER_2_URL: ${{ secrets.VITE_PROJECT_POSTER_2_URL }}
+          VITE_PROJECT_VIDEO_3_URL: ${{ secrets.VITE_PROJECT_VIDEO_3_URL }}
+          VITE_PROJECT_POSTER_3_URL: ${{ secrets.VITE_PROJECT_POSTER_3_URL }}
+          VITE_PROJECT_VIDEO_4_URL: ${{ secrets.VITE_PROJECT_VIDEO_4_URL }}
+          VITE_PROJECT_POSTER_4_URL: ${{ secrets.VITE_PROJECT_POSTER_4_URL }}
+          VITE_PROJECT_VIDEO_5_URL: ${{ secrets.VITE_PROJECT_VIDEO_5_URL }}
+          VITE_PROJECT_POSTER_5_URL: ${{ secrets.VITE_PROJECT_POSTER_5_URL }}
+          VITE_PROJECT_VIDEO_6_URL: ${{ secrets.VITE_PROJECT_VIDEO_6_URL }}
+          VITE_PROJECT_POSTER_6_URL: ${{ secrets.VITE_PROJECT_POSTER_6_URL }}
         run: |
-          if [ -z "$ENV_PRODUCTION" ]; then
-            echo "Missing required secret: ENV_PRODUCTION"
+          set -euo pipefail
+
+          if [ -n "${ENV_PRODUCTION:-}" ]; then
+            printf "%s" "$ENV_PRODUCTION" > .env.production
+            echo "Created .env.production from ENV_PRODUCTION secret."
+            exit 0
+          fi
+
+          required_vars=(
+            VITE_SUPABASE_URL
+            VITE_SUPABASE_ANON_KEY
+            VITE_SUPABASE_STORAGE_BUCKET
+            VITE_SUPABASE_STORAGE_BASE_URL
+            VITE_RESUME_BUCKET_URL
+            VITE_ABOUT_PHOTO_URL
+            VITE_HERO_VIDEO_URL
+            VITE_PROJECT_VIDEO_1_URL
+            VITE_PROJECT_POSTER_1_URL
+            VITE_PROJECT_VIDEO_2_URL
+            VITE_PROJECT_POSTER_2_URL
+            VITE_PROJECT_VIDEO_3_URL
+            VITE_PROJECT_POSTER_3_URL
+            VITE_PROJECT_VIDEO_4_URL
+            VITE_PROJECT_POSTER_4_URL
+            VITE_PROJECT_VIDEO_5_URL
+            VITE_PROJECT_POSTER_5_URL
+            VITE_PROJECT_VIDEO_6_URL
+            VITE_PROJECT_POSTER_6_URL
+          )
+
+          missing_vars=()
+          : > .env.production
+
+          for var_name in "${required_vars[@]}"; do
+            var_value="${!var_name:-}"
+            if [ -z "$var_value" ]; then
+              missing_vars+=("$var_name")
+              continue
+            fi
+            printf "%s=%s\n" "$var_name" "$var_value" >> .env.production
+          done
+
+          if [ "${#missing_vars[@]}" -gt 0 ]; then
+            echo "Missing required secrets: ${missing_vars[*]}"
+            echo "Either add these secrets or set ENV_PRODUCTION with full file contents."
             exit 1
           fi
-          printf "%s" "$ENV_PRODUCTION" > .env.production
+
+          echo "Created .env.production from individual VITE_* secrets."
 
       - name: Build
         run: npm run build
