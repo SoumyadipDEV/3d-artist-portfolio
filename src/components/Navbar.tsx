@@ -124,7 +124,7 @@ const Navbar = () => {
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="fixed right-4 top-4 z-50 sm:left-0 sm:right-0 sm:top-0 sm:border-b sm:border-border/40 sm:bg-background/70 sm:backdrop-blur-md sm:supports-[backdrop-filter]:bg-background/55"
+        className="fixed right-4 top-4 z-50 sm:left-0 sm:right-0 sm:top-0"
       >
         <div className="flex items-center justify-end sm:site-frame sm:gap-3 sm:py-4 sm:justify-between">
           <Link
