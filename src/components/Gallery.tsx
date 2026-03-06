@@ -8,24 +8,24 @@ const Gallery = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
-    <section id="showcase" className="relative py-24 sm:py-32">
-      <div className="mx-auto max-w-6xl px-4">
+    <section id="showcase" className="section-shell relative">
+      <div className="site-frame">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.7 }}
-          className="mb-12"
+          className="mb-10 sm:mb-12"
         >
-          <p className="mb-2 font-mono text-xs uppercase tracking-[0.3em] text-primary">
+          <p className="section-kicker mb-2 font-mono uppercase tracking-[0.3em] text-primary">
             Portfolio
           </p>
-          <h2 className="text-3xl font-bold sm:text-4xl">
+          <h2 className="section-title font-bold">
             Selected Works
           </h2>
         </motion.div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 xs:gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, i) => (
             <ProjectCard
               key={project.id}

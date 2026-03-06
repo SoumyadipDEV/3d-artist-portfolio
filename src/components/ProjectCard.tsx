@@ -16,7 +16,7 @@ const ProjectCard = ({ project, index, onClick }: ProjectCardProps) => {
       transition={{ duration: 0.5, delay: index * 0.1 }}
       whileHover={{ y: -6 }}
       onClick={onClick}
-      className="group cursor-pointer overflow-hidden rounded-xl border border-border bg-card transition-colors hover:border-primary/30"
+      className="group flex h-full min-w-0 cursor-pointer flex-col overflow-hidden rounded-xl border border-border bg-card transition-colors hover:border-primary/30"
     >
       {/* Video thumbnail area */}
       <div className="relative aspect-video w-full overflow-hidden bg-secondary">
@@ -38,7 +38,7 @@ const ProjectCard = ({ project, index, onClick }: ProjectCardProps) => {
         </div>
       </div>
 
-      <div className="p-4">
+      <div className="flex flex-1 flex-col p-4 xs:p-5">
         <div className="mb-2 flex items-center gap-2">
           <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-[10px] font-medium uppercase tracking-wider text-primary">
             {project.category}

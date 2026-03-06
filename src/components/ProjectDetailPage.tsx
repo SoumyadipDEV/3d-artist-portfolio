@@ -98,8 +98,8 @@ const ProjectDetailPage = ({
   onVideoFirstPlay,
 }: ProjectDetailPageProps) => {
   return (
-    <article className="space-y-6 p-4 sm:p-6">
-      <section className="overflow-hidden rounded-2xl border border-border/70 bg-black">
+    <article className="min-w-0 space-y-5 p-3 xs:p-4 sm:space-y-6 sm:p-6">
+      <section className="overflow-hidden rounded-xl border border-border/70 bg-black sm:rounded-2xl">
         <SupabaseVideo
           videoUrl={project.videoUrl}
           posterUrl={project.posterUrl}
@@ -108,7 +108,7 @@ const ProjectDetailPage = ({
       </section>
 
       <section className="space-y-2">
-        <div className="overflow-hidden rounded-2xl border border-border/80 bg-gradient-to-r from-card via-card to-secondary/40 px-3 py-2.5">
+        <div className="overflow-hidden rounded-xl border border-border/80 bg-gradient-to-r from-card via-card to-secondary/40 px-3 py-3 sm:rounded-2xl">
           <div className="flex flex-wrap items-center gap-2">
             <div className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-background/60 px-3 py-2 text-sm">
               <Eye className="h-4 w-4 text-muted-foreground" />
@@ -134,8 +134,11 @@ const ProjectDetailPage = ({
                 {statsLoading ? "--" : likeCount.toLocaleString()}
               </motion.span>
             </div>
-            <div className="grow" />
-            <motion.div whileTap={{ scale: 0.95 }} transition={{ type: "spring", stiffness: 420, damping: 24 }}>
+            <motion.div
+              className="sm:ml-auto"
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 420, damping: 24 }}
+            >
               <Button
                 type="button"
                 variant="secondary"
@@ -168,14 +171,16 @@ const ProjectDetailPage = ({
         ) : null}
       </section>
 
-      <section className="space-y-4 rounded-2xl border border-border/70 bg-card/60 p-4 sm:p-5">
+      <section className="space-y-4 rounded-xl border border-border/70 bg-card/60 p-4 sm:rounded-2xl sm:p-5">
         <div className="flex items-center gap-2">
           <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-[10px] font-medium uppercase tracking-wider text-primary">
             {project.category}
           </span>
         </div>
         <div className="space-y-2">
-          <h2 className="text-2xl font-bold text-foreground sm:text-3xl">{project.title}</h2>
+          <h2 className="text-[clamp(1.75rem,1.25rem+2vw,2.5rem)] font-bold text-foreground">
+            {project.title}
+          </h2>
           <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">{project.description}</p>
         </div>
         <div className="space-y-2">

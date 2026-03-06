@@ -26,29 +26,29 @@ const AboutMe = () => {
   const aboutPhotoUrl = import.meta.env.VITE_ABOUT_PHOTO_URL?.trim() ?? "";
 
   return (
-    <section id="about" className="relative py-24 sm:py-32">
-      <div className="mx-auto max-w-5xl px-4">
+    <section id="about" className="section-shell relative">
+      <div className="site-frame-narrow">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.7 }}
         >
-          <p className="mb-2 font-mono text-xs uppercase tracking-[0.3em] text-primary">
+          <p className="section-kicker mb-2 font-mono uppercase tracking-[0.3em] text-primary">
             About
           </p>
-          <h2 className="mb-8 text-3xl font-bold sm:text-4xl">
+          <h2 className="section-title mb-8 font-bold">
             Rajdip Banerjee
           </h2>
         </motion.div>
 
-        <div className="grid gap-10 md:grid-cols-[280px_1fr]">
+        <div className="grid gap-8 sm:gap-10 md:grid-cols-[minmax(0,280px)_1fr]">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="mx-auto w-full max-w-[280px] md:mx-0"
+            className="mx-auto w-full max-w-[240px] xs:max-w-[280px] md:mx-0"
           >
             <div className="aspect-square rounded-2xl border border-dashed border-primary/50 bg-secondary/50 p-4">
               <div className="h-full overflow-hidden rounded-xl border border-border bg-card">
@@ -75,7 +75,7 @@ const AboutMe = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-4 text-muted-foreground"
+            className="space-y-4 text-sm leading-7 text-muted-foreground xs:text-base"
           >
             <p>
               I am Rajdip Banerjee, a fresher 3D artist building a career through freelance
@@ -98,9 +98,11 @@ const AboutMe = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-14"
+          className="mt-10 xs:mt-12 sm:mt-14"
         >
-          <h3 className="mb-6 text-2xl font-semibold text-foreground">Education</h3>
+          <h3 className="mb-6 text-[clamp(1.5rem,1.1rem+1.8vw,2rem)] font-semibold text-foreground">
+            Education
+          </h3>
           <div className="space-y-4">
             {education.map((item, index) => (
               <motion.div
@@ -125,7 +127,7 @@ const AboutMe = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6, delay: 0.25 }}
-          className="mt-14"
+          className="mt-10 xs:mt-12 sm:mt-14"
         >
           <p className="mb-4 text-sm font-medium uppercase tracking-wider text-muted-foreground">
             Software & Tools

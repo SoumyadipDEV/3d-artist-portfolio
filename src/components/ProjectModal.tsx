@@ -129,8 +129,8 @@ const ProjectModal = ({ project, open, onOpenChange }: ProjectModalProps) => {
   return (
     <>
       <Dialog open={open} onOpenChange={onOpenChange}>
-        <DialogContent className="max-h-[92vh] max-w-5xl gap-0 overflow-hidden border-border bg-card p-0 sm:rounded-2xl [&>button]:z-20 [&>button]:rounded-full [&>button]:border [&>button]:border-border/70 [&>button]:bg-background/80 [&>button]:backdrop-blur-sm">
-          <div className="max-h-[92vh] overflow-y-auto">
+        <DialogContent className="max-h-[calc(100dvh-1rem)] max-w-5xl gap-0 overflow-hidden border-border bg-card p-0 sm:max-h-[92svh] sm:rounded-2xl [&>button]:z-20 [&>button]:rounded-full [&>button]:border [&>button]:border-border/70 [&>button]:bg-background/80 [&>button]:backdrop-blur-sm">
+          <div className="max-h-[calc(100dvh-1rem)] overflow-y-auto overscroll-contain sm:max-h-[92svh]">
             <ProjectDetailPage
               project={project}
               playCount={playCount}

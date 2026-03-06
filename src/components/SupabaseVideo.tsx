@@ -40,11 +40,12 @@ const SupabaseVideo = ({ videoUrl, posterUrl, onFirstPlay }: SupabaseVideoProps)
           poster={posterUrl}
           controls
           autoPlay
+          muted
           loop
           playsInline
           preload="metadata"
           onPlay={handlePlay}
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover object-center bg-black"
         >
           Your browser does not support HTML5 video playback.
         </video>

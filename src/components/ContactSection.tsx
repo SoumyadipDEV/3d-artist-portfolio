@@ -23,25 +23,25 @@ const ContactSection = () => {
   const [state, handleSubmit] = useForm("meelpyao");
 
   return (
-    <section id="contact" className="relative py-24 sm:py-32">
-      <div className="mx-auto max-w-4xl px-4">
+    <section id="contact" className="section-shell relative">
+      <div className="site-frame-compact">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.7 }}
-          className="mb-12 text-center"
+          className="mb-10 text-center sm:mb-12"
         >
-          <p className="mb-2 font-mono text-xs uppercase tracking-[0.3em] text-primary">
+          <p className="section-kicker mb-2 font-mono uppercase tracking-[0.3em] text-primary">
             Contact
           </p>
-          <h2 className="mb-4 text-3xl font-bold sm:text-4xl">
+          <h2 className="section-title mb-4 font-bold">
             Let's Create Together
           </h2>
-          <p className="mx-auto max-w-md text-muted-foreground">
+          <p className="mx-auto max-w-md text-sm leading-7 text-muted-foreground xs:text-base">
             Have a project in mind or just want to say hi? I'd love to hear from you.
           </p>
-          <div className="mt-6 flex flex-col items-center gap-3 text-sm text-muted-foreground sm:flex-row sm:justify-center sm:gap-8">
+          <div className="mt-6 flex flex-col items-center gap-3 text-sm text-muted-foreground sm:flex-row sm:flex-wrap sm:justify-center sm:gap-8">
             <p className="flex items-center gap-2">
               <MapPin className="h-4 w-4 text-primary" />
               Kolkata, India
@@ -61,10 +61,10 @@ const ContactSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mx-auto max-w-lg"
+          className="mx-auto w-full max-w-lg"
         >
           {state.succeeded ? (
-            <div className="rounded-2xl border border-border bg-card p-6 text-center sm:p-8">
+            <div className="rounded-2xl border border-border bg-card p-5 text-center xs:p-6 sm:p-8">
               <p className="text-sm text-muted-foreground">
                 Thanks for reaching out. Your message has been sent successfully.
               </p>
@@ -74,7 +74,7 @@ const ContactSection = () => {
               action="https://formspree.io/f/meelpyao"
               method="POST"
               onSubmit={handleSubmit}
-              className="space-y-4 rounded-2xl border border-border bg-card p-6 sm:p-8"
+              className="space-y-4 rounded-2xl border border-border bg-card p-5 xs:p-6 sm:p-8"
             >
               <div className="grid gap-4 sm:grid-cols-2">
                 <Input
@@ -141,7 +141,7 @@ const ContactSection = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="mt-12 flex items-center justify-center gap-4"
+          className="mt-10 flex flex-wrap items-center justify-center gap-3 xs:gap-4 sm:mt-12"
         >
           {socialLinks.map((social) => {
             const isExternal = social.href.startsWith("http");

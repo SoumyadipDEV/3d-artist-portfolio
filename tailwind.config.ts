@@ -1,15 +1,32 @@
 import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
 
 export default {
   darkMode: ["class"],
   content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
   prefix: "",
   theme: {
+    screens: {
+      xs: "480px",
+      sm: "768px",
+      md: "992px",
+      lg: "1200px",
+      xl: "1400px",
+      "2xl": "1536px",
+    },
     container: {
       center: true,
-      padding: "2rem",
+      padding: {
+        DEFAULT: "1rem",
+        xs: "1.25rem",
+        sm: "1.5rem",
+        md: "1.75rem",
+        lg: "2rem",
+      },
       screens: {
-        "2xl": "1400px",
+        lg: "1200px",
+        xl: "1400px",
+        "2xl": "1536px",
       },
     },
     extend: {
@@ -87,5 +104,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [tailwindcssAnimate],
 } satisfies Config;

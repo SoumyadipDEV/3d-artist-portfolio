@@ -3,7 +3,7 @@ import Hero from "@/components/Hero";
 
 const Index = () => {
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main className="page-shell bg-background text-foreground">
       <Navbar />
       <Hero />
     </main>
